@@ -1,0 +1,60 @@
+% MATLAB.sty
+% 专为 MATLAB 代码高亮定制
+% 直接调用：\usepackage{matlablisting}
+% 使用环境：\begin{MATLAB}{标题} 代码 \end{MATLAB}
+% 读取文件：\inputMATLAB{文件.m}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{matlablisting}[2025/03/29 MATLAB Listing Style]
+
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\RequirePackage{fontspec}
+
+% 颜色定义
+\definecolor{mKeyword}{RGB}{0,0,255}
+\definecolor{mString}{RGB}{160,32,240}
+\definecolor{mComment}{RGB}{34,139,34}
+\definecolor{mBackground}{RGB}{245,245,245}
+\definecolor{mNumber}{RGB}{134,145,148}
+\definecolor{mNumberbg}{RGB}{237,240,241}
+
+% 全局基础样式
+\lstset{
+    language=Matlab,
+    xleftmargin=30pt,
+    xrightmargin=10pt,
+    frame=l,
+    framesep=15pt,
+    basicstyle=\footnotesize\fontspec{Consolas},
+    keywordstyle=\color{mKeyword},
+    stringstyle=\color{mString},
+    commentstyle=\color{mComment},
+    backgroundcolor=\color{mBackground},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=t,
+    breaklines=true,
+    framexleftmargin=5pt,
+    fillcolor=\color{mNumberbg},
+    rulecolor=\color{mNumberbg},
+    numberstyle=\tiny\color{mNumber},
+    numbersep=9pt,
+    numbers=left,
+    stepnumber=1,
+    escapeinside={/*@}{@*/},
+}
+
+% 自定义 MATLAB 环境
+\lstnewenvironment{MATLAB}[1]{
+    \lstset{title=#1}
+}{}
+
+% 快速导入 .m 文件
+\newcommand{\inputMATLAB}[1]{
+    \lstinputlisting[title=#1]{#1}
+}
+
+\endinput
