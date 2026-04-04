@@ -1,2 +1,21 @@
-# A-Simple-Tex-Template-for-SEU-BSMA-ML-BME-
-Here is A Simple Tex Template for SEU BSMA, but can be used better for medical students 
+# 2026 Spring, SEU BSMA ，for students of (ML&BME) 
+这里是车男大学南京铁道医学院（其实是生医开课）2026年春学期生物系统建模与分析课程的相关代码和作业。
+## 适用对象
+- 医学院某神秘**22字好专业**的学生
+- 也许可能适用于某十一字学院某六字专业的学生和某五字学院选择某六字专业方向的学生
+## 提供内容
+- 课程作业的相关代码
+- 课程作业的模版（Tex格式）
+- 课程作业报告（Tex格式），在"body"目录下,各作业依次为"HW1.tex", "HW2.tex", "HW3.tex"等
+## 注意事项
+- 所有Tex文件都需要在Tex编译器中编译，才能生成PDF文件。
+- 代码大量使用了AI，不保证准确性
+- 文档可能写的不是最优解，欢迎提交Pull Request
+- 希望能够帮助到大家
+- **我们如此热爱丁家桥（也许还有九龙湖和四牌楼）**
+## 联系方式
+- 邮箱：[eitherwoods@seu.edu.cn]
+## 参考文献
+- 课程报告模版采用了 https://github.com/njustwh2014/SEUCourseReportTexTemplate.git 中的模版，但是进行了一些修改，以适应课程的需求。
+## 版权声明
+- 本项目的所有代码和文档都是开源的，您可以自由使用、修改和分发，但是请注明出处。
