@@ -1,0 +1,13 @@
+# 自动检测文本文件，并规范换行符
+* text=auto
+
+# 明确指定 TeX 文件使用 LF（适合跨平台团队）
+*.tex text eol=lf
+
+# 明确指定 Windows 批处理文件使用 CRLF
+*.bat text eol=crlf
+
+# 二进制文件不进行任何转换
+*.png binary
+*.jpg binary
+*.pdf binary
