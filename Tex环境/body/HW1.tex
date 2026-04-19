@@ -20,8 +20,6 @@ S(0) = 100,\quad T(0) = 100.
 
 题目要求采用显式Euler法和四阶Runge-Kutta法（可以使用ode45直接求解，也可以自编代码）以及Simulink软件，求解未来100年内两种群数量的变化，时间步长取 $\Delta t = 0.001$ 年（有余力的可以尝试取 $\Delta t = 0.1$ 年），并对比分析结果。
 
-
-
 \section{数值方法原理}
 
 \subsection{显式Euler法}
@@ -53,7 +51,6 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
 
 将 $\mathbf{y} = [S, T]^\mathrm{T}$ 和右端函数代入即可。
 
-
 \section{MATLAB运行结果及分析}
 
 使用自编的Euler法和RK4法程序以及MATLAB自带的ode45方法，分别取步长 $\Delta t = 0.001$ 和 $\Delta t = 0.1$，计算时间区间 $[0,100]$ 年的种群数量。以下是实验的结果，采用图片进行展示。
@@ -62,7 +59,7 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
 在步长 $\Delta t = 0.001$ 年时，三种方法得到的结果如下，这里直接画图展示：
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\linewidth]{figure/HW1/dt0.001.png}
+    \includegraphics[width=0.75\linewidth]{figure/HW1figure/dt0.001.png}
     \caption{dt=0.001时的三种方法}
 \end{figure}
 
@@ -72,7 +69,7 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
 在步长 $\Delta t = 0.1$ 年时，三种方法得到的结果如下，这里依旧直接画图展示：
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\linewidth]{figure/HW1/dt0.1.png}
+    \includegraphics[width=0.75\linewidth]{figure/HW1figure/dt0.1.png}
     \caption{dt=0.1时的三种方法}
 \end{figure}
 不难注意到，这里Euler法步长 $\Delta t = 0.001$ 年时的情况出现了差异。接下来单独分析一下两种方法的差异性。
@@ -81,14 +78,13 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
     \item \textbf{四阶Runge-Kutta法}：在相同放大时间步长的测试条件下，整体仿真曲线依旧保持光滑连续，振荡形态稳定可靠，计算结果与高精度小步长 $\Delta t=0.001$ 工况下的基准曲线高度吻合。这一对比结果充分验证了 RK4 算法具备更优异的长期数值稳定性与容错能力，对计算步长的宽容度更高。这说明工程仿真中可在保证精度前提下选用更大步长以提升整体计算效率。
 \end{itemize}
 
-
 \subsection{Simulink仿真结果}
 
 在Simulink中搭建模型，分别选择ode4（RK4）和ode1（Euler）作为求解器，同时采用固定步长方法，步长分别设为$\Delta t = 0.001$ 和 $\Delta t = 0.1$。
 搭建的结果如示例图：
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{figure/HW1/simulink.png}
+    \includegraphics[width=0.75\linewidth]{figure/HW1figure/simulink.png}
     \caption{Simulink建模示例图}
 \end{figure}
 .slx文件详见支持文档的code附录。
@@ -98,12 +94,12 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode4S0.001.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode4S0.001.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode4T0.001.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode4T0.001.png}
     \end{minipage}
     \caption{$\Delta t=0.001$ 时 ode4S 与 ode4T 数值结果}
 \end{figure}
@@ -111,12 +107,12 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode4S0.1.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode4S0.1.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode4T0.1.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode4T0.1.png}
     \end{minipage}
     \caption{$\Delta t=0.1$ 时 ode4S 与 ode4T 数值结果}
 \end{figure}
@@ -128,12 +124,12 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode1S0.001.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode1S0.001.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode1T0.001.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode1T0.001.png}
     \end{minipage}
     \caption{$\Delta t=0.001$ 时 ode1S 与 ode1T 数值结果}
 \end{figure}
@@ -141,19 +137,17 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode1S0.1.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode1S0.1.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{figure/HW1/ode1T0.1.png}
+        \includegraphics[width=\linewidth]{figure/HW1figure/ode1T0.1.png}
     \end{minipage}
     \caption{$\Delta t=0.1$ 时 ode1S 与 ode1T 数值结果}
 \end{figure}
 \par
 不难注意到，这里Euler法在两种不同步长下仿真结果出现了显著差异。这与我们前文编程计算的结果相符，说明了显式Euler法的稳定性对步长敏感的特点。
-
-
 
 \section{结果讨论}
 
@@ -166,10 +160,8 @@ T_{n+1} &= T_n + \Delta t (a_3 T_n - a_4 S_n T_n).
 
 本道题目的用意在于让我们初步了解利用MATLAB进行仿真的方法。对于题目反映的生态学等方面的内涵，我们在此不做讨论。
 
-
-
 \section{代码附录}
-\inputMATLAB{codes/HW1/main.m}
-\inputMATLAB{codes/HW1/EulerMethod.m}
-\inputMATLAB{codes/HW1/ode45Solver.m}
-\inputMATLAB{codes/HW1/rk4Method.m}
+\inputMATLAB{codes/HW1codes/main.m}
+\inputMATLAB{codes/HW1codes/EulerMethod.m}
+\inputMATLAB{codes/HW1codes/ode45Solver.m}
+\inputMATLAB{codes/HW1codes/rk4Method.m}

@@ -52,9 +52,9 @@
     \lstset{title=#1}
 }{}
 
-% 快速导入 .m 文件
-\newcommand{\inputMATLAB}[1]{
-    \lstinputlisting[title=#1]{#1}
+% 快速导入 .m 文件（处理了下划线等特殊字符问题）
+\newcommand{\inputMATLAB}[1]{%
+    \lstinputlisting[title=\detokenize{#1}]{\detokenize{#1}}%
 }
 
 \endinput
