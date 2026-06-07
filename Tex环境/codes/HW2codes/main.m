@@ -18,4 +18,4 @@ xlabel('时间 t'); ylabel('药物浓度');
 legend('房室1', '房室2', '房室3', 'Location', 'best');
 title('三房室药物浓度变化曲线');
 grid on;
-hold off;
+hold on;
