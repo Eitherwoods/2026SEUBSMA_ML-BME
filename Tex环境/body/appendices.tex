@@ -1,87 +1,31 @@
 \newpage
 \appendix
 
-%%附录第一个章节
-\section{第一附录}
+\section{Python验证代码}
 
+以下为用于数据拟合和可视化的Python代码，使用scipy进行非线性拟合：
 
-%%变量列举
+\inputpython{codes/metabolic_rate_codes/validate_kleiber_realdata.py}{1}{60}
 
-\begin{table}[H]
-\caption{Symbol Table-Constants}
-\centering
-\begin{tabular}{lll}
-\toprule
-Symbol & Definition  & Units\\
-\midrule[2pt]
-\multicolumn{3}{c}{\textbf{Constants} }\\
-$DL$&Expectancy of poisson-distribution &  unitless \\
-$NCL$ &Never- Change-Lane& unitless\\
-$CCL$&Cooperative-Change-Lane& unitless\\
-$ACL$&Aggressive-Change-Lane& unitless\\
-$FCL$&Friendly-Change-Lane& unitless\\
-$SCC$&Self-driving-Cooperative-Car& unitless\\
-$NSC$&None-Self-drive-Car& unitless\\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection*{拟合函数与数据加载}
 
+\inputpython{codes/metabolic_rate_codes/validate_kleiber_realdata.py}{23}{55}
 
-\section{第二附录}
-\textcolor[rgb]{0.98,0.00,0.00}{\textbf{Simulation Code}}
-\begin{python}
-import java.util.*;  
-public class test {  
-    public static void main (String[]args){   
-        int day=0;  
-        int month=0;  
-        int year=0;  
-        int sum=0;  
-        int leap;     
-        System.out.print("请输入年,月,日\n");     
-        Scanner input = new Scanner(System.in);  
-        year=input.nextInt();  
-        month=input.nextInt();  
-        day=input.nextInt();  
-        switch(month) /*先计算某月以前月份的总天数*/    
-        {     
-        case 1:  
-            sum=0;break;     
-        case 2:  
-            sum=31;break;     
-        case 3:  
-            sum=59;break;     
-        case 4:  
-            sum=90;break;     
-        case 5:  
-            sum=120;break;     
-        case 6:  
-            sum=151;break;     
-        case 7:  
-            sum=181;break;     
-        case 8:  
-            sum=212;break;     
-        case 9:  
-            sum=243;break;     
-        case 10:  
-            sum=273;break;     
-        case 11:  
-            sum=304;break;     
-        case 12:  
-            sum=334;break;     
-        default:  
-            System.out.println("data error");break;  
-        }     
-        sum=sum+day; /*再加上某天的天数*/    
-        if(year%400==0||(year%4==0&&year%100!=0))/*判断是不是闰年*/    
-            leap=1;     
-        else    
-            leap=0;     
-        if(leap==1 && month>2)/*如果是闰年且月份大于2,总天数应该加一天*/    
-            sum++;     
-        System.out.println("It is the the day:"+sum);  
-        }  
-} 
-\end{python}
+\subsection*{幂律拟合与结果输出}
 
+\inputpython{codes/metabolic_rate_codes/validate_kleiber_realdata.py}{76}{108}
 
+\subsection*{可视化绘图}
+
+\inputpython{codes/metabolic_rate_codes/validate_kleiber_realdata.py}{127}{175}
+
+\section{数据来源详细说明}
+
+\subsection*{静息心率数据}
+来源于MSD Veterinary Manual (Merck Sharp \& Dohme Corp.)，该手册是全球兽医领域的权威参考文献。数据链接：https://www.msdvetmanual.com/multimedia/table/resting-heart-rates
+
+\subsection*{生理参数数据}
+来源于哈佛医学院BioNumbers项目，该项目汇集了各类生物学参数的标准值。数据包括小鼠、大鼠、兔、猫、狗、人等动物的基础生理参数。
+
+\subsection*{基础代谢率数据}
+部分来源于FAO/WHO联合发布的《Human Energy Requirements》报告，该报告提供了基于体重和年龄预测BMR的标准公式。
