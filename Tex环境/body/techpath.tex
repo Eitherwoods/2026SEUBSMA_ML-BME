@@ -1,0 +1,55 @@
+% 技术路线图
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    box/.style={rectangle, rounded corners, minimum width=3cm, minimum height=0.8cm, text centered, draw=black, fill=blue!10, font=\songti},
+    arrow/.style={thick, ->, >=stealth, line width=0.8pt}
+]
+
+% 第一行：问题背景
+\node[box, fill=green!20] (problem) {问题背景与文献综述};
+
+% 第二行：模型假设
+\node[box, below=of problem] (assumption) {模型假设与符号说明};
+
+% 第三行：模型推导
+\node[box, below=of assumption, minimum width=6cm, fill=yellow!20] (derivation) {数学建模与理论推导};
+
+% 第四行：三个推导结果
+\node[box, below=1.5cm of derivation, xshift=-3.5cm, fill=blue!15] (radius) {$r_k = R \cdot m^{-k/2}$};
+\node[box, below=1.5cm of derivation, fill=blue!15] (length) {$l_k = L \cdot m^{-k/3}$};
+\node[box, below=1.5cm of derivation, xshift=3.5cm, fill=blue!15] (capillary) {$N_c \propto M^{3/4}$};
+
+% 第五行：结论
+\node[box, below=1.5cm of length, fill=red!15] (conclusion) {理论结果};
+
+% 第六行：数据验证
+\node[box, below=of conclusion, minimum width=6cm, fill=orange!20] (validation) {真实数据验证};
+
+% 第七行：验证结果
+\node[box, below=1.5cm of validation, xshift=-2.5cm, fill=purple!15] (bmr_result) {BMR: 幂指数0.7705};
+\node[box, below=1.5cm of validation, xshift=2.5cm, fill=purple!15] (hr_result) {心率: 幂指数-0.2620};
+
+% 主流程箭头
+\draw[arrow] (problem) -- (assumption);
+\draw[arrow] (assumption) -- (derivation);
+
+% 从derivation到三个框的箭头（使用south锚点）
+\draw[arrow] (derivation.south) -- ++(0,-0.4) -| (radius.north);
+\draw[arrow] (derivation.south) -- (length.north);
+\draw[arrow] (derivation.south) -- ++(0,-0.4) -| (capillary.north);
+
+% 从三个框汇聚到conclusion的箭头
+\draw[arrow] (radius.south) -- ++(0,-0.4) -| (conclusion.north west);
+\draw[arrow] (length.south) -- (conclusion.north);
+\draw[arrow] (capillary.south) -- ++(0,-0.4) -| (conclusion.north east);
+
+% 后续流程箭头
+\draw[arrow] (conclusion) -- (validation);
+\draw[arrow] (validation.south) -- ++(0,-0.4) -| (bmr_result.north);
+\draw[arrow] (validation.south) -- ++(0,-0.4) -| (hr_result.north);
+
+% 标注
+\node[above=0.3cm of derivation, font=\kaishu, text width=6cm, align=center] {模型推导过程};
+\node[above=0.3cm of validation, font=\kaishu, text width=6cm, align=center] {实证验证过程};
+
+\end{tikzpicture}

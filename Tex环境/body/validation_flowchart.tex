@@ -1,0 +1,64 @@
+% 模型验证技术路线图 - 三竖块布局（无重叠）
+\begin{tikzpicture}[
+    node distance=0.6cm and 3.5cm,
+    box/.style={rectangle, rounded corners, minimum height=0.8cm, text centered, draw=black, fill=blue!10, font=\songti\small},
+    arrow/.style={thick, ->, >=stealth, line width=0.8pt}
+]
+
+% ========== 第一竖块：模型对比 ==========
+\node[box, fill=green!20, minimum width=2.8cm] (data) {收集哺乳动物生理数据};
+\node[box, below=0.8cm of data, fill=yellow!20, minimum width=3.5cm] (models) {多模型拟合对比};
+
+% 五种模型（横向排列）
+\node[box, below=0.8cm of models, fill=blue!15, minimum width=1.0cm] (power) {幂律};
+\node[box, right=0.25cm of power, fill=blue!15, minimum width=1.0cm] (linear) {线性};
+\node[box, right=0.25cm of linear, fill=blue!15, minimum width=1.0cm] (quad) {二次};
+\node[box, right=0.25cm of quad, fill=blue!15, minimum width=1.0cm] (log) {对数};
+\node[box, right=0.25cm of log, fill=blue!15, minimum width=1.0cm] (exp) {指数};
+
+% ========== 第二竖块：指标评估 ==========
+\node[box, right=3.8cm of data, fill=orange!20, minimum width=2.8cm] (metrics) {模型评估指标};
+\node[box, below=0.8cm of metrics, fill=purple!15, minimum width=1.5cm] (r2) {R²};
+\node[box, right=0.3cm of r2, fill=purple!15, minimum width=1.5cm] (aic) {AIC};
+\node[box, right=0.3cm of aic, fill=purple!15, minimum width=1.5cm] (fpe) {FPE};
+\node[box, below=1.0cm of aic, fill=cyan!15, minimum width=2.0cm] (ftest) {F检验};
+\node[box, below=0.8cm of ftest, fill=red!15, minimum width=2.5cm] (select) {幂律模型最优};
+
+% ========== 第三竖块：参数验证 ==========
+\node[box, right=3.8cm of metrics, fill=cyan!20, minimum width=2.8cm] (validate) {参数拟合验证};
+\node[box, below=0.8cm of validate, fill=green!15, minimum width=2.0cm] (bmr) {BMR: $b=0.7705$};
+\node[box, right=0.4cm of bmr, fill=green!15, minimum width=2.0cm] (hr) {心率: $b=-0.2620$};
+\node[box, below=1.0cm of bmr, fill=red!20, minimum width=5.0cm] (conclusion) {验证理论推导有效};
+
+% ========== 竖块内部箭头 ==========
+% 第一竖块
+\draw[arrow] (data) -- (models);
+\draw[arrow] (models.south) -- ++(0,-0.4) -| (power.north);
+\draw[arrow] (models.south) -- ++(0,-0.4) -| (linear.north);
+\draw[arrow] (models.south) -- ++(0,-0.4) -| (quad.north);
+\draw[arrow] (models.south) -- ++(0,-0.4) -| (log.north);
+\draw[arrow] (models.south) -- ++(0,-0.4) -| (exp.north);
+
+% 第二竖块
+\draw[arrow] (metrics.south) -- ++(0,-0.4) -| (r2.north);
+\draw[arrow] (metrics.south) -- ++(0,-0.4) -| (aic.north);
+\draw[arrow] (metrics.south) -- ++(0,-0.4) -| (fpe.north);
+\draw[arrow] (aic.south) -- (ftest.north);
+\draw[arrow] (ftest) -- (select);
+
+% 第三竖块
+\draw[arrow] (validate.south) -- ++(0,-0.4) -| (bmr.north);
+\draw[arrow] (validate.south) -- ++(0,-0.4) -| (hr.north);
+\draw[arrow] (bmr.south) -- ++(0,-0.4) -| (conclusion.north);
+\draw[arrow] (hr.south) -- ++(0,-0.4) -| (conclusion.north);
+
+% ========== 竖块之间的箭头 ==========
+\draw[arrow] (models.east) -- ++(0.5,0) |- (metrics.west);
+\draw[arrow] (metrics.east) -- ++(0.5,0) |- (validate.west);
+
+% ========== 竖块标注 ==========
+\node[above=0.3cm of data, font=\kaishu\small] {模型对比};
+\node[above=0.3cm of metrics, font=\kaishu\small] {指标评估};
+\node[above=0.3cm of validate, font=\kaishu\small] {参数验证};
+
+\end{tikzpicture}
