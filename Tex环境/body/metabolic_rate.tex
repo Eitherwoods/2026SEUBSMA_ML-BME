@@ -360,6 +360,8 @@ T \propto t \propto M^{\frac{1}{4}}
 \end{tabular}
 \end{table}
 
+数据涵盖了从克级的小鼠到百公斤级的人类，跨越约四个数量级的体重范围，能够较好地检验幂律关系在不同尺度上的适用性。
+
 \subsection{幂律拟合方法}
 
 我们使用Python对数据进行幂律拟合，模型为：
@@ -423,6 +425,8 @@ y = a \cdot x^b
 \end{tabular}
 \end{table}
 
+由\cref{tab:bmr-models}可见，幂律模型的R²值最高（0.9994），同时AIC（-0.64）和FPE（0.62）均为最低，表明其拟合效果最佳。
+
 \subsubsection{心率数据模型对比结果}
 
 \begin{table}[H]
@@ -441,6 +445,8 @@ y = a \cdot x^b
 \bottomrule[1.5pt]
 \end{tabular}
 \end{table}
+
+同理，\cref{tab:hr-models}表明幂律模型在心率数据上的R²（0.9800）、AIC（43.75）和FPE（1005.08）同样为最优，进一步支持了幂律关系在心率建模中的适用性。
 
 \subsubsection{F检验}
 
@@ -535,6 +541,8 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 
 注：理论值基于Kleiber定律计算：BMR$_{理论} = 3.45 \times M^{0.75}$，$f_{理论} = 241 \times M^{-0.25}$。
 
+\cref{tab:comparison}显示，除小鼠和大鼠偏差较大外，其余动物的BMR偏差均在20\%以内，特别是人类的偏差仅1.8\%，表明Kleiber定律对大型哺乳动物的预测效果更好。
+
 \subsection{可视化分析}
 
 图\ref{fig:bmr-fitting}和图\ref{fig:hr-fitting}分别展示了BMR和心率与体重的双对数拟合结果。
@@ -556,7 +564,7 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 \end{minipage}
 \end{figure}
 
-从图中可以看出，实际数据点与拟合曲线高度吻合，Kleiber定律理论曲线也与数据趋势一致。
+从图中可以看出，实际数据点与拟合曲线高度吻合，Kleiber定律理论曲线也与数据趋势一致。这表明幂律模型能够很好地描述BMR和心率与体重之间的关系。
 
 \subsection{残差分析}
 
@@ -569,7 +577,7 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 \label{fig:residual}
 \end{figure}
 
-残差分析显示，BMR拟合残差在$\pm 20\%$以内波动，心率拟合残差在$\pm 15\%$以内波动，表明幂律模型对数据的拟合效果良好。
+残差分析显示，BMR拟合残差在$\pm 20\%$以内波动，心率拟合残差在$\pm 15\%$以内波动，表明幂律模型对数据的拟合效果良好。残差无明显系统偏差，进一步验证了模型的可靠性。
 
 \subsection{标度指数对比}
 
@@ -582,7 +590,7 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 \label{fig:scaling}
 \end{figure}
 
-从图中可以看出，BMR和心率的观测标度指数与理论值高度接近，验证了血管分级模型的正确性。
+从图中可以看出，BMR和心率的观测标度指数与理论值高度接近，验证了血管分级模型的正确性。各标度指数的偏差均在5\%以内，理论预测与实际观测吻合良好。
 
 \subsection{不同动物代谢率的直观对比}
 
@@ -595,7 +603,7 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 \label{fig:comparison}
 \end{figure}
 
-从图中可以直观看出，体重越大的动物基础代谢率越高，但并非线性增长，而是遵循幂律关系。
+从图中可以直观看出，体重越大的动物基础代谢率越高，但并非线性增长，而是遵循幂律关系。图中六种动物的BMR分布清晰地验证了Kleiber定律的3/4幂律特征。
 
 \section{结论}
 

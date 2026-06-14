@@ -319,3 +319,6 @@ TSWLatexianTemp*
 
 # xwatermark package
 *.xwm
+
+# 致谢（acknowledge）含个人信息
+Tex环境\body\acknowledge.tex
