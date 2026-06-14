@@ -15,10 +15,10 @@
 \geometry{top=3.0cm, bottom=2.7cm, left=2.5cm, right=2.5cm}
 
 %==================== 页眉页脚 ====================
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} 
 \pagestyle{fancy}         % 启用 fancy 样式
 \fancyhf{}                % 清空所有页眉页脚
-\fancyhead[C]{\zihao{5}\kaishu 学号~姓名~BSMA Homework}  % 页眉居中
+\fancyhead[C]{\zihao{5}\kaishu 标度探源：基于血管网络的Kleiber标度律推导}  % 页眉居中
 \fancyfoot[C]{~\zihao{5}\thepage~}                           % 页脚居中（页码）
 \renewcommand{\headrulewidth}{0.65pt}  % 页眉横线粗细
 \setlength{\headheight}{9pt}	%避免页眉与正文重叠。
@@ -26,7 +26,7 @@
 \ctexset{
   section = {
     format = {\centering\bfseries\zihao{-2}},  % 一级标题：居中、黑体、三号
-    name = {第, 章}                            % 标题前缀：第 X 章
+    name = {第, 节}                            % 标题前缀：第 X 节
   },
   subsection = {
     nameformat = {\bfseries\zihao{3}}          % 二级标题：黑体、四号
@@ -51,6 +51,7 @@
 %==================== 超链接与交叉引用 ====================
 \usepackage{hyperref}
 \hypersetup{hidelinks}    % 取消链接边框（默认红色框）
+\usepackage{cleveref}     % 提供 \cref 命令用于智能交叉引用
 
 %==================== 代码高亮（listings） ====================
 \usepackage{listings}
@@ -73,8 +74,8 @@
 
 %==================== MATLAB / Python 代码高亮风格 ====================
 % 这两个包提供专用的代码环境（如 \begin{MATLAB}、\begin{python}）
-\usepackage{MATLAB}       % 自定义的 MATLAB 高亮，需文件 MATLAB.sty
-%\usepackage{pythonhighlight} % Python 高亮，需文件 pythonhighlight.sty
+%\usepackage{MATLAB}       % 自定义的 MATLAB 高亮，需文件 MATLAB.sty
+\usepackage{pythonhighlight} % Python 高亮，需文件 pythonhighlight.sty
 
 %==================== 表格增强 ====================
 \usepackage{booktabs}     % 提供三线表命令 \toprule、\midrule、\bottomrule
@@ -91,7 +92,7 @@
 
 % 以下 \tikzbox 用于给文字加一个带边框的盒子（需要 tikz 支持，若不需要可注释）
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows,positioning}
+\usetikzlibrary{shapes,arrows,positioning,shapes.geometric,calc}
 \newlength\tikzboxwidth
 \newlength\tikzboxheight
 \newcommand\tikzbox[1]{%
@@ -112,16 +113,24 @@
 \bibliographystyle{gbt7714-2005}
 
 % 导入封面文件
-\input{body/cover}
+\include{body/cover}
+
+% 导入摘要
+\include{body/abstract}
 
 % 生成目录
 \tableofcontents
 
-% 正文（示例）
-\include{body/HW2}
+% 正文
+\include{body/metabolic_rate}
+
+%致谢
+\include{body/acknowledge}
 
 % 参考文献
-\addcontentsline{toc}{section}{参考文献}
-\bibliography{bibfile}
+\include{body/reference}
+
+% 附录
+\include{body/appendices}
 
 \end{document}
