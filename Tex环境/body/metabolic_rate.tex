@@ -155,6 +155,17 @@ $t$ & 脉搏传导总时间 & s \\
 
 \section{模型建立与推导}
 
+\subsection{血管网络结构示意}
+血管网络的自相似分支结构是产生幂律标度关系的几何基础。
+图\ref{fig:vascular}展示了血管网络的分形结构示意图，直观呈现了从主动脉到毛细血管的逐级分支过程。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figure/metabolic_rate/vascular_network.png}
+\caption{血管网络分形结构示意图}
+\label{fig:vascular}
+\end{figure}
+
 \subsection{模型选择的理论依据}
 
 我们为什么选择血管分级模型来研究基础代谢率与体重的关系呢？这主要基于以下几方面的考虑：
@@ -249,7 +260,7 @@ l_k = L \cdot m^{-\frac{k}{3}}
 
 \subsection{血液总体积与体重的关系}
 
-人体内的血液总体积等于各級血管容积之和：
+人体内的血液总体积等于各级血管容积之和：
 \begin{equation}
 V_{\text{blood}} = \sum_{k=0}^{N} m^k \pi r_k^2 l_k = \pi R^2 L \sum_{k=0}^{N} m^{-\frac{k}{3}}
 \label{eq:blood-volume}
@@ -372,7 +383,7 @@ T \propto t \propto M^{\frac{1}{4}}
 
 根据上述来源，我们整理了6种哺乳动物的可靠数据，如\cref{tab:animal-data}所示。
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \caption{多种哺乳动物的体重、静息心率和基础代谢率数据}
 \label{tab:animal-data}
 \centering
@@ -434,7 +445,7 @@ y = a \cdot x^b
 
 \subsubsection{BMR数据模型对比结果}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \caption{BMR数据多模型拟合对比}
 \label{tab:bmr-models}
 \centering
@@ -453,7 +464,7 @@ y = a \cdot x^b
 
 \subsubsection{心率数据模型对比结果}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \caption{心率数据多模型拟合对比}
 \label{tab:hr-models}
 \centering
@@ -540,7 +551,7 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 
 \cref{tab:comparison}展示了Kleiber定律理论预测值与实际观测值的比较。
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \caption{Kleiber定律理论值与实际值比较}
 \label{tab:comparison}
 \centering
@@ -562,33 +573,109 @@ F = \frac{(SS_{\text{reduced}} - SS_{\text{full}}) / (df_{\text{reduced}} - df_{
 
 \subsection{可视化分析}
 
-图\ref{fig:bmr-fitting}展示了BMR和心率与体重的双对数拟合结果。
+图\ref{fig:bmr-fitting}和图\ref{fig:hr-fitting}分别展示了BMR和心率与体重的双对数拟合结果。
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{figure/metabolic_rate/bmr_hr_fitting.png}
-\caption{BMR和心率与体重的幂律关系拟合}
+\includegraphics[width=0.75\textwidth]{figure/metabolic_rate/bmr_fitting.png}
+\caption{BMR与体重的幂律关系拟合}
 \label{fig:bmr-fitting}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figure/metabolic_rate/hr_fitting.png}
+\caption{心率与体重的幂律关系拟合}
+\label{fig:hr-fitting}
+\end{figure}
+
 从图中可以看出，实际数据点与拟合曲线高度吻合，Kleiber定律理论曲线也与数据趋势一致。
+
+\subsection{残差分析}
+
+为评估拟合质量，我们对BMR和心率的拟合残差进行分析。图\ref{fig:residual}展示了拟合残差的分布情况。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figure/metabolic_rate/residual_analysis.png}
+\caption{BMR和心率拟合残差分析}
+\label{fig:residual}
+\end{figure}
+
+残差分析显示，BMR拟合残差在$\pm 20\%$以内波动，心率拟合残差在$\pm 15\%$以内波动，表明幂律模型对数据的拟合效果良好。
+
+\subsection{标度指数对比}
+
+图\ref{fig:scaling}对比了本研究推导的各项标度指数的理论值与观测值。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figure/metabolic_rate/scaling_exponents.png}
+\caption{标度指数理论值与观测值对比}
+\label{fig:scaling}
+\end{figure}
+
+从图中可以看出，BMR和心率的观测标度指数与理论值高度接近，验证了血管分级模型的正确性。
+
+\subsection{不同动物代谢率的直观对比}
+
+图\ref{fig:comparison}展示了不同动物基础代谢率的对比情况。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figure/metabolic_rate/metabolic_comparison.png}
+\caption{不同动物基础代谢率对比}
+\label{fig:comparison}
+\end{figure}
+
+从图中可以直观看出，体重越大的动物基础代谢率越高，但并非线性增长，而是遵循幂律关系。
 
 \section{结论}
 
 本研究通过建立血管网络的几何模型，从理论上推导出了基础代谢率与体重的3/4幂律关系（Kleiber定律）。通过对多种哺乳动物的实际生理数据进行幂律拟合，我们验证了这一理论推断的正确性，与Kleiber的原始观测结果高度一致\upcite{Kleiber1932}。
 
-主要结论如下：
+\subsection{理论推导}
+
+本研究的主要理论推导包括：
+
 \begin{enumerate}
-    \item 基于血管网络的分数维特性，可以从几何角度严格推导出基础代谢率与体重的3/4幂律关系，这一结果与West等人提出的代谢理论（MTE）相吻合\upcite{West1997}；
-    \item 由速度守恒推导出血管半径衰减率$\alpha = m^{-1/2}$，由血容量守恒推导出长度增长率$\beta = m^{-1/3}$；
-    \item 进一步推导出毛细血管总数$N_c \propto M^{3/4}$，从而得到BMR $\propto M^{3/4}$，这一结论支持了Kleiber定律的普适性\upcite{Niklas2015}；
-    \item 主动脉长度$L_{\text{total}} \propto M^{1/4}$，脉搏传导时间$t \propto M^{1/4}$；
-    \item 心率HR $\propto M^{-1/4}$，与BMR的推导形成自洽的理论体系，这一关系已在多种哺乳动物中得到验证\upcite{Mortola2023}；
-    \item BMR拟合幂指数为0.7705，与理论值0.75仅偏差2.73\%，决定系数$R^2 = 0.999432$；
-    \item 心率拟合幂指数为-0.2620，与理论值-0.25偏差4.79\%，决定系数$R^2 = 0.979997$；
-    \item 真实数据与Kleiber定律高度吻合，验证了我们推论的正确性。
+    \item \textbf{血管半径衰减规律}：由速度守恒推导出血管半径衰减率$\alpha = m^{-1/2}$，即每级血管半径为上一级的$1/\sqrt{m}$倍；
+    \item \textbf{血管长度增长规律}：由血容量守恒推导出长度增长率$\beta = m^{-1/3}$，即每级血管长度为上一级的$1/\sqrt[3]{m}$倍；
+    \item \textbf{毛细血管总数标度}：推导出毛细血管总数$N_c \propto M^{3/4}$，这是Kleiber定律的几何基础；
+    \item \textbf{心率标度律}：推导出心率HR $\propto M^{-1/4}$，与BMR的推导形成自洽的理论体系。
 \end{enumerate}
 
-本研究不仅从理论上支持了Kleiber定律，还通过实际数据为其提供了实证支持。正如Agutter和Wheatley所指出的，代谢标度关系的研究对于理解生命的基本规律具有重要意义\upcite{Agutter2004}，本研究的结果进一步巩固了Kleiber定律作为生物学基本规律的地位。
+\subsection{实证验证}
 
-未来的研究可以进一步扩展到更多物种，包括植物和微生物，以验证这一幂律关系的普适性\upcite{Niklas2015}。此外，结合现代生物技术如代谢组学和基因组学数据，可以更深入地理解代谢率与体重关系背后的分子机制。
+通过真实数据验证，我们得到以下结果：
+
+\begin{enumerate}
+    \item \textbf{BMR拟合}：幂指数为0.7705，与理论值0.75仅偏差2.73\%，决定系数$R^2 = 0.999432$；
+    \item \textbf{心率拟合}：幂指数为-0.2620，与理论值-0.25偏差4.79\%，决定系数$R^2 = 0.979997$；
+    \item \textbf{残差分析}：BMR拟合残差在$\pm 20\%$以内，心率拟合残差在$\pm 15\%$以内，拟合效果良好；
+    \item \textbf{模型对比}：幂律模型在R²、AIC、FPE和交叉验证中均表现最优，F检验表明幂律模型显著优于线性模型。
+\end{enumerate}
+
+\subsection{研究意义}
+
+本研究的意义在于：
+
+\begin{enumerate}
+    \item 从血管网络的分形结构出发，为Kleiber定律提供了严格的几何推导，支持了West等人提出的代谢理论（MTE）\upcite{West1997}；
+    \item 建立了完整的理论框架，将BMR、心率、血管长度等多个生理参数统一在血管分级模型下；
+    \item 通过真实数据验证了理论预测的正确性，巩固了Kleiber定律作为生物学基本规律的地位\upcite{Agutter2004}；
+    \item 为理解生物体的异速标度关系提供了新的视角和方法论。
+\end{enumerate}
+
+\subsection{研究展望}
+
+未来的研究可以从以下方向扩展：
+
+\begin{enumerate}
+    \item 扩展到更多物种，包括鸟类、爬行动物、鱼类等，验证幂律关系的普适性\upcite{Niklas2015}；
+    \item 结合代谢组学和基因组学数据，深入理解代谢率与体重关系背后的分子机制；
+    \item 研究病理状态下（如肥胖、糖尿病）代谢标度关系的变化；
+    \item 将血管分级模型应用于药物代谢动力学和剂量计算。
+\end{enumerate}
+
+综上所述，本研究从理论和实证两个层面验证了Kleiber定律的正确性，为理解生命现象的普遍规律提供了重要依据。
